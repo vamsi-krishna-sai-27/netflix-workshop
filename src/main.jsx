@@ -4,7 +4,7 @@ import Header from './components/common/header'
 import './index.css'
 import MainContent from "./components/common/mainContent"
 import { BrowserRouter } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link,Routes,Route } from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
 
@@ -14,10 +14,15 @@ createRoot(document.getElementById('root')).render(
         </Header>
         <MainContent child={<Header/>}></MainContent> */}
         <nav>
-          <Link></Link>
-          <Link></Link>
-          <Link></Link>
+          <Link to='/'>Home </Link>
+          <Link to='/about'>about</Link>
+          <Link to='/contant'>contant</Link>
         </nav>
+          <Routes>
+            <Route path="/" element={<MainContent/>}></Route>
+            <Route path="/about" element={<h1>About</h1>}></Route>
+            <Route path="/contact" element={<h1>contact</h1>}></Route>
+          </Routes>
     </BrowserRouter>
 
 )
