@@ -1,7 +1,6 @@
-import Header from "./header";
 import SignIn from "./signIn";
 
-export default function MainContent() {
+export default function MainContent({child}) {
   return (
     <div
       className="relative bg-cover bg-center backdrop-blur-lg"
@@ -10,6 +9,7 @@ export default function MainContent() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 "></div>
 
       <div className="relative z-10">
+        {child}
         <SignIn></SignIn>
 
       </div>

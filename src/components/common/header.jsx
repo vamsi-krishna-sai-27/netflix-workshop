@@ -1,4 +1,5 @@
 import netflix from "../../../public/netflix-logo-netflix-logo-in-red-text-u62hu7Wm_t-removebg-preview.png"
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
@@ -15,9 +16,16 @@ export default function Header() {
             </select>
             
             </div >
-            <div className="mr-40">
+            <Link to="/">
+            <div className="">
                 <button className="bg-red-600 text-white px-4 py-1 font-bold rounded-sm ">Sign in</button>
             </div>
+            </Link>
+            <Link to="/">
+            <div className="mr-40">
+                <button className="bg-red-600 text-white px-4 py-1 font-bold rounded-sm "> Dashboard</button>
+            </div>            
+            </Link>
         </div>
       </div>
     </div>
