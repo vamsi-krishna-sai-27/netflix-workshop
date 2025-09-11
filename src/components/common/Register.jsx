@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from "axios";
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,9 +13,23 @@ const Register = () => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log("Register Data:", formData);
+    try {
+        const response=await axios.post(
+            "http://localhost:8060/api/user/register",
+            {
+                name:formData.name,
+                email:formData.email,
+                pass:formData.password
+            }
+        )
+        if(response.data.status){
+            console.log(response.data.message);
+        }
+    } catch (err) {
+        console.log(err.message);
+    }
 
   };
 
@@ -24,7 +38,7 @@ const Register = () => {
       <div className="w-full max-w-md bg-white p-6 rounded-2xl shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
+
           <div>
             <label className="block text-sm font-medium text-gray-700">Name</label>
             <input
@@ -70,6 +84,7 @@ const Register = () => {
           <button
             type="submit"
             className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition"
+            onClick={handleSubmit}
           >
             Register
           </button>
